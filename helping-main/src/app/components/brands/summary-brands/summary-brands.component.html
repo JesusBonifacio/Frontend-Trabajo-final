@@ -1,0 +1,20 @@
+<div>
+    <h2>Resumen de Ventas por Marca</h2>
+</div>
+<br>
+<button mat-raised-button routerLink="/brand-list">Regresar a Lista de Marcas</button>
+<br>
+<br>
+<div style="width: 1000px; height: 300px;">
+    <ngx-charts-bar-vertical
+    [results]="datosVenta"
+    [xAxis]="true"
+    [yAxis]="true"
+    [showGridLines]="false"
+    [xAxisLabel]="'Marca'"
+    [yAxisLabel]="'Ventas'"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+
+></ngx-charts-bar-vertical>
+</div>

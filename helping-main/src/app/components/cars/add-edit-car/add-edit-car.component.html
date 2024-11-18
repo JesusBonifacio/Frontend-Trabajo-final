@@ -1,0 +1,61 @@
+<div>
+    <h2 *ngIf="carId==0">Agregar un Auto</h2>
+    <h2 *ngIf="carId>0">Editar un Auto</h2>    
+</div>
+<br>
+<form [formGroup]="addEditCar">
+    <mat-form-field>
+        <mat-label>Id</mat-label>
+        <input matInput formControlName="id" readonly="true">
+    </mat-form-field>
+    <br><br>
+    
+    <mat-form-field>
+        <mat-label>Marca</mat-label>
+        <mat-select (selectionChange)="cargarModelos($event)" formControlName="brand_id">
+            <mat-option *ngFor="let brand of brands" [value]="brand.id">{{brand.name}} </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br><br>
+    
+    <mat-form-field>
+        <mat-label>Modelo</mat-label>
+        <mat-select  formControlName="model_id">
+            <mat-option *ngFor="let model of models" [value]="model.id">{{model.name}} </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br><br>
+
+    <mat-form-field>
+        <mat-label>Placa</mat-label>
+        <input matInput formControlName="license">
+    </mat-form-field>
+    <br><br>
+    <mat-form-field>
+        <mat-label>Precio de Venta</mat-label>
+        <input matInput formControlName="salePrice">
+    </mat-form-field>
+    <br><br>
+    <mat-form-field>
+        <mat-label>Año de Fabricación</mat-label>
+        <input matInput formControlName="fabricationYear">
+    </mat-form-field>
+
+
+    <br><br>
+    <mat-form-field>
+        <mat-label>Fecha de Compra</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="purchaseDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+
+
+<br><br>
+<button mat-stroked-button routerLink="/car-list">Cancelar</button>
+- 
+<button mat-raised-button (click)="grabarCar()">Grabar</button>
+
+</form>

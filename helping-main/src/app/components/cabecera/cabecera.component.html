@@ -1,0 +1,15 @@
+<mat-toolbar>
+<mat-toolbar-row>
+    <span>Car Dealer System v1.0</span>
+    <span class="example-spacer"></span>
+    
+    <a routerLink="/home" style="color: white;" *ngIf="hayUsuarioLogeado()">
+        <mat-icon aria-hidden="false" aria-label="Example heart icon">home</mat-icon>
+    </a>
+    &nbsp;&nbsp;&nbsp;
+    <a (click)="logout()" style="cursor: pointer;" *ngIf="hayUsuarioLogeado()">
+        <mat-icon aria-hidden="false" aria-label="Example delete icon">logout</mat-icon>
+    </a>
+     
+  </mat-toolbar-row>
+</mat-toolbar>

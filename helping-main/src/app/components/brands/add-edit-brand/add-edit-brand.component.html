@@ -1,0 +1,50 @@
+<div>
+    <h2 *ngIf="brandId==0">Agregar una Marca</h2>
+    <h2 *ngIf="brandId>0">Editar una Marca</h2>
+    
+</div>
+<br>
+<form [formGroup]="addEditBrand">
+    <mat-form-field>
+        <mat-label>Id</mat-label>
+        <input matInput formControlName="id" readonly="true">
+    </mat-form-field>
+    <br><br>
+    <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="name" placeholder="Ingrese un nombre">
+        <div *ngIf="addEditBrand.get('name')?.hasError('required') && addEditBrand.get('name')?.touched" >
+            <span style="color: orange;">Este campo es obligatorio</span>
+        </div>
+        <div *ngIf="addEditBrand.get('name')?.hasError('minlength') && addEditBrand.get('name')?.touched" >
+            <span style="color: orange;">Debe tener más de 1 caracter</span>
+        </div>
+    </mat-form-field>
+    <br><br>
+    <mat-form-field>
+        <mat-label>País</mat-label>
+        <input matInput formControlName="country">
+    </mat-form-field>
+    <br><br>
+    <mat-form-field>
+        <mat-label>Año de Fundación</mat-label>
+        <input matInput formControlName="fundationYear">
+    </mat-form-field>
+    <br><br>
+    <div style="background-color: darkslategray;"    >
+        <mat-checkbox matInput formControlName="active"  style="width: 200px">¿Está activa?</mat-checkbox>
+    </div>
+    <br><br>
+        <mat-label>Logotipo</mat-label>
+        <input type="file" accept="image/jpeg, image/png" (change)="actualizaLogo($event)">
+        <BR>
+        <span>El archivo seleccionado es: {{rutaLogo}}</span>
+        <BR>
+        <img [src]="base64Logo" width="200" height="200">
+
+<br><br>
+<button mat-stroked-button routerLink="/brand-list">Cancelar</button>
+- 
+<button mat-raised-button (click)="grabarBrand()">Grabar</button>
+
+</form>

@@ -1,0 +1,20 @@
+<h2 class="text-center">Bienvenido usuario!</h2>
+<form [formGroup]="loginForm" class="mx-auto bg-slate-400 max-w-sm">
+    <mat-form-field>
+        <mat-label>Usuario</mat-label>
+        <input matInput formControlName="userName">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" [type]="'password'">
+    </mat-form-field>
+    <br>
+    <span style="color: red;" *ngIf="hayError"><b>¡Hubo un error con el logeo.
+            Intentelo nuevamente!</b></span>
+    <br>
+    <button mat-flat-button color="secondary" routerLink="/">Regresar</button>
+    <span> - </span>
+    <button mat-raised-button color="primary" (click)="login()">Login</button>
+
+</form>

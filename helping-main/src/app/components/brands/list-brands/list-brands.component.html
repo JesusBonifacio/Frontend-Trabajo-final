@@ -1,0 +1,77 @@
+<div>
+    <h2>Lista de Marcas</h2>
+</div>
+<br>
+<mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Escriba un filtro" #input>
+</mat-form-field>
+- <button mat-raised-button routerLink="/brand-add">Agregar nuevo Brand</button>
+- <button mat-flat-button routerLink="/brand-summary">Resumen de Ventas por Brand</button>
+
+<table mat-table [dataSource]="dsBrands" class="mat-elevation-z8">
+
+  
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> # Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="logo">
+      <th mat-header-cell *matHeaderCellDef> Logo </th>
+      <td mat-cell *matCellDef="let element">
+        <img [src]="element.logo" width="40" height="40">
+      </td>
+    </ng-container>
+  
+  
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="country">
+      <th mat-header-cell *matHeaderCellDef> País </th>
+      <td mat-cell *matCellDef="let element"> {{element.country}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="fundationYear">
+      <th mat-header-cell *matHeaderCellDef> Año de Fundación </th>
+      <td mat-cell *matCellDef="let element"> {{element.fundationYear}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="antiguedad">
+      <th mat-header-cell *matHeaderCellDef> Antiguedad </th>
+      <td mat-cell *matCellDef="let element"> {{calculaAntiguedad(element.fundationYear)}} años </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="active">
+      <th mat-header-cell *matHeaderCellDef> ¿Activa? </th>
+      <td mat-cell *matCellDef="let element"> 
+       <mat-icon *ngIf="element.active">check</mat-icon>
+       <mat-icon *ngIf="!element.active">clear</mat-icon>
+       
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="opciones">
+        <th mat-header-cell *matHeaderCellDef> Opciones </th>
+        <td mat-cell *matCellDef="let element"> 
+            
+            <a (click)="eliminarBrand(element.id)" style="cursor: pointer;">
+                <mat-icon>delete</mat-icon>
+            </a>
+            <a routerLink="/brand-edit/{{element.id}}" style="cursor: pointer;">
+                <mat-icon>edit</mat-icon>
+            </a>       
+            
+
+
+        </td>
+      </ng-container>
+    
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
