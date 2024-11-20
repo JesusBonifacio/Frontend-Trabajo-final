@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+    <span>Bienvenido</span>
+    <span class="example-spacer"></span>
+    <button class="ms-2 " mat-raised-button
+        [routerLink]="'/campaign-list'">Inicio</button>
+    <button
+        [routerLink]="'/compaign-add'" class="ms-2 "
+        mat-raised-button>Crear</button>
+    <button [routerLink]="'/explore'" class="ms-2 "
+        mat-raised-button>Explorar</button>
+    <button class="ms-2 " mat-raised-button [routerLink]="'/login'">Cerrar
+        sesión</button>
+</mat-toolbar>

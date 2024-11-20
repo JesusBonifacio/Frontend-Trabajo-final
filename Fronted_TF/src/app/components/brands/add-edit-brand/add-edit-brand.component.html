@@ -1,0 +1,56 @@
+<app-toolbar></app-toolbar>
+<div class="px-24 mt-5">
+    <div class="mt-10">
+        <h4 *ngIf="!campaignName">Agregar una campaña</h4>
+        <h4 *ngIf="campaignName">Editar una campaña</h4>
+
+    </div>
+    <form [formGroup]="myForm" class="max-w-xl">
+        <mat-form-field class="w-full">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="campName"
+                placeholder="Ingrese un nombre">
+            <div
+                *ngIf="myForm.get('name')?.hasError('required') && myForm.get('name')?.touched">
+                <span style="color: orange;">Este campo es obligatorio</span>
+            </div>
+            <div
+                *ngIf="myForm.get('name')?.hasError('minlength') && myForm.get('name')?.touched">
+                <span style="color: orange;">Debe tener más de 1 caracter</span>
+            </div>
+        </mat-form-field>
+        <mat-form-field class="w-full">
+            <mat-label>Descripción</mat-label>
+            <input matInput formControlName="description">
+        </mat-form-field>
+        <mat-form-field class="w-full">
+            <mat-label>Dinero objetivo</mat-label>
+            <input matInput formControlName="moneyGoal">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="w-full">
+            <mat-label>Fecha de inicio</mat-label>
+            <input matInput [matDatepicker]="startPicker"
+                formControlName="startDate" required>
+            <mat-datepicker-toggle matSuffix
+                [for]="startPicker"></mat-datepicker-toggle>
+            <mat-datepicker #startPicker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-full">
+            <mat-label>Fecha de fin</mat-label>
+            <input matInput [matDatepicker]="endPicker"
+                formControlName="endDate" required>
+            <mat-datepicker-toggle matSuffix
+                [for]="endPicker"></mat-datepicker-toggle>
+            <mat-datepicker #endPicker></mat-datepicker>
+        </mat-form-field>
+        <div class="flex">
+            <button mat-stroked-button class="w-full me-3"
+                routerLink="/brand-list">Cancelar</button>
+            <button [disabled]="myForm.invalid" color class="w-full ms-3"
+                mat-raised-button
+                (click)="grabarBrand()">Grabar</button>
+        </div>
+
+    </form>
+</div>

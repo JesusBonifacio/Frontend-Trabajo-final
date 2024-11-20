@@ -1,0 +1,43 @@
+<header class="bg-red-100 shadow">
+    <nav class="container flex justify-between items-center">
+        <img
+            src="https://w7.pngwing.com/pngs/936/173/png-transparent-volunteering-computer-icons-charitable-organization-seaquest-utah-exchange-student-hand-logo-volunteering.png"
+            alt="Helping Hand Logo" class="logo" />
+        <ul>
+            <li class="mt-2"><a href="#features">Features</a></li>
+            <li class="mt-2"><a href="#plans">Planes</a></li>
+            <li class="mt-2"><a href="#contact">Contactanos</a></li>
+            <li><button [routerLink]="'/login'"
+                    mat-raised-button>Iniciar sesión</button></li>
+        </ul>
+    </nav>
+</header>
+<br>
+<div class="p-3 shadow">
+    <h2 class="text-center">Iniciar sesión</h2>
+    <form [formGroup]="loginForm" class="mx-auto max-w-sm">
+        <mat-form-field class="w-full">
+            <mat-label>Usuario</mat-label>
+            <input matInput formControlName="userName">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="w-full">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" [type]="'password'">
+        </mat-form-field>
+        <br>
+        <span style="color: red;" *ngIf="hayError"><b>¡Hubo un error con el
+                logeo.
+                Intentelo nuevamente!</b></span>
+        <br>
+        <div class="flex">
+            <button mat-flat-button class="w-full" color="secondary"
+                routerLink="/">Regresar</button>
+            <button class="w-full ms-3" mat-raised-button color="primary"
+                (click)="login()">Login</button>
+
+        </div>
+        <p class="py-10 text-center">¿No tienes una cuenta? <a href="#"
+                [routerLink]="'/register'" class="underline">Registrarse</a></p>
+    </form>
+</div>

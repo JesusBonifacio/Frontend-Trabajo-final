@@ -1,0 +1,61 @@
+<header class="bg-red-100 shadow">
+    <nav class="container flex justify-between items-center">
+        <img
+            src="https://w7.pngwing.com/pngs/936/173/png-transparent-volunteering-computer-icons-charitable-organization-seaquest-utah-exchange-student-hand-logo-volunteering.png"
+            alt="Helping Hand Logo" class="logo" />
+        <ul>
+            <li class="mt-2"><a href="#features">Features</a></li>
+            <li class="mt-2"><a href="#plans">Planes</a></li>
+            <li class="mt-2"><a href="#contact">Contactanos</a></li>
+            <li><button [routerLink]="'/login'"
+                    mat-raised-button>Iniciar sesión</button></li>
+        </ul>
+    </nav>
+</header>
+<br>
+<div class="p-3 shadow">
+    <h3 class="text-center">Crear una cuenta!</h3>
+    <form [formGroup]="loginForm" class="mx-auto max-w-sm">
+        <mat-form-field class="w-full">
+            <mat-label>Usuario2</mat-label>
+            <input matInput formControlName="userName">
+        </mat-form-field>
+        <mat-form-field class="w-full">
+            <mat-label>Correo electrónico</mat-label>
+            <input matInput formControlName="userName">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill" class="w-full">
+            <mat-label>Fecha de nacimiento</mat-label>
+            <input matInput [matDatepicker]="picker"
+                formControlName="fechaEnvio" required>
+            <mat-datepicker-toggle matSuffix
+                [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="w-full">
+            <mat-label>Contraseña</mat-label>
+            <input matInput formControlName="password" [type]="'password'">
+        </mat-form-field>
+        <mat-form-field class="w-full">
+            <mat-label>Confirmar contraseña</mat-label>
+            <input matInput formControlName="password" [type]="'password'">
+        </mat-form-field>
+        <br>
+        <span style="color: red;" *ngIf="hayError"><b>¡Hubo un error con el
+                logeo.
+                Intentelo nuevamente!</b></span>
+        <br>
+        <div class="flex">
+            <button mat-flat-button class="w-full" color="secondary"
+                routerLink="/">Regresar</button>
+            <span> - </span>
+            <button class="w-full" mat-raised-button color="primary"
+                (click)="login()">Registrarse</button>
+
+        </div>
+        <p class="py-10 text-center">¿No tienes una cuenta? <a href="#"
+                [routerLink]="'/register'" class="underline">Registrarse</a></p>
+    </form>
+</div>
